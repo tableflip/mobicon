@@ -4,6 +4,7 @@ import pathExists from 'path-exists';
 import tempfile from 'tempfile';
 import gm from 'gm';
 import pify from 'pify';
+import testPlatformIcons from './test-platform-icons';
 import fn from './';
 
 test.beforeEach(t => {
@@ -54,4 +55,20 @@ test('output size svg', async t => {
 
 	t.is(width, 40);
 	t.is(height, 40);
+});
+
+test('custom platform icons', async t => {
+	await fn('fixtures/icon.svg', {platform: 'ios', dest: t.context.tmp, platformIcons: testPlatformIcons});
+
+	const image1 = gm(path.join(t.context.tmp, 'custom-25.png'));
+	const {width: width1, height: height1} = await pify(image1.size.bind(image1))();
+
+	t.is(width1, 25);
+	t.is(height1, 25);
+
+	const image2 = gm(path.join(t.context.tmp, 'subdir', 'custom-60.png'));
+	const {width: width2, height: height2} = await pify(image2.size.bind(image2))();
+
+	t.is(width2, 60);
+	t.is(height2, 60);
 });

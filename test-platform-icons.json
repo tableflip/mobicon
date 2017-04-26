@@ -1,0 +1,10 @@
+[
+	{
+		"file": "custom-25.png",
+		"dimension": 25
+	},
+	{
+		"file": "subdir/custom-60.png",
+		"dimension": 60
+	}
+]

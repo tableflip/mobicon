@@ -55,7 +55,7 @@ module.exports = (file, opts) => {
 		return Promise.reject(new Error(`Platform ${opts.platform} is not supported.`));
 	}
 
-	const icons = platformIcons[opts.platform.toLowerCase()];
+	const icons = opts.platformIcons || platformIcons[opts.platform.toLowerCase()];
 	const resizeFn = path.extname(file) === '.svg' ? 'density' : 'resize';
 
 	const img = gm(file);
