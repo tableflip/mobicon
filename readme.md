@@ -90,6 +90,12 @@ Default: `process.cwd()`
 
 Directory to save the generated icons.
 
+##### platformIcons
+
+Type: `object`<br>
+Default: As per the specified platform (see below)
+
+Allows the user to specify their own custom filenames and image sizes for the generated output.  Refer to [this file](https://github.com/SamVerschueren/android-icon-list/blob/master/icons.json) for an example.
 
 ## Platforms
 
